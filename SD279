@@ -1,0 +1,25 @@
+import React,{useState,useEffect} from "react"
+const ListGrid=()=>{
+    const url='https://fakestoreapi.com/products'
+     const [products,setProducts]=useState([])
+    useEffect(()=>{
+        fetch(url).then(res=>res.json()).then(data=>
+            setProducts(data)
+        ).catch(error=>console.log(error))
+    },[])
+    return <div className="flex px-3 py-3 m-3 ">
+            {products.map((item,index)=>{
+                return(
+                    <div className="w-50px h-50px">
+                    <p><span className="title">Title :</span>{item.title}</p>
+                    <div>
+                        <img src={item.image} alt={item.title} className="imgsize"/>
+                        </div>
+                        <p> <span className="title">Price :</span>{item.price}</p>
+                        <p><span className="title">Description :</span>{item.description}</p>
+                    </div>
+                )
+            })}
+    </div>
+}
+export default ListGrid
