@@ -1,24 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  let [mode,setMode]=useState({
+    backGroundColor:"white",
+    color:"black"
+  })
+
+  function toggleTheme(){
+    if(mode.backGroundColor==="white"){
+      setMode({
+        backGroundColor:"black",
+        color:"white"
+      })
+      localStorage.setItem('theme','dark');
+    }else{
+      setMode({
+    backGroundColor:"white",
+    color:"black"
+  });
+  localStorage.setItem('light','dark');
+    }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <div className='container' style={mode}>
+      <button onClick={toggleTheme}>Hi Click Me</button>
     </div>
+    </>
   );
 }
 
