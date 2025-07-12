@@ -1,0 +1,27 @@
+import React, { useEffect, useState } from "react";
+export default function ViewTable (){
+    
+    const url = "https://fakestoreapi.com/products";
+    const [ fetchedData, setFetchedData ] = useState([]);
+    const fetchInfo = () =>{
+        return fetch(url)
+        
+        
+        .then( (res) => res.json())
+        .then((d) => setFetchedData(d))
+    }
+    useEffect(() =>{
+        fetchInfo();
+    },[])
+    console.log(fetchedData, "fetchedDatafetchedData");
+    
+    return (
+    <>
+    <div>
+        <table>
+            
+        </table>
+    </div>
+    </>
+)
+}
