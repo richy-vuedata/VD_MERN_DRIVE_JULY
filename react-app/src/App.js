@@ -1,23 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
+import React ,{useState}from 'react';
+//import debounce from 'debounce'
 
 function App() {
+
+  const [search,setSearch]=useState('')
+
+
+  const SearchFunction=debounce((e)=>{
+    setSearch(e.target.value)
+  },500);
+
+  const fetchItem =async()=>{
+
+    
+
+  }
+
+
+
+
+
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <form>
+       <input type={text} onChange={(e)=>SearchFunction(e)}></input>
+    </form>
     </div>
   );
 }
