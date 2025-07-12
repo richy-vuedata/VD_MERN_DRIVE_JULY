@@ -8,7 +8,8 @@ app.get('/', (req, res) => {
 
 app.get('/userList',(req,res)=>{
     let user_list = [{"name":"Eswar","age":12},{"name":"Ajith","age":10}];
-  res.send({"status":true,"data":user_list});  
+    console.log()
+  res.json({status:true,"data":user_list});  
 })
 
 app.listen(port, () => {
