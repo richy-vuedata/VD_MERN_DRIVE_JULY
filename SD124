@@ -1,0 +1,43 @@
+import logo from './logo.svg';
+import './App.css';
+import { useEffect, useState } from 'react';
+function App() {
+  const [apiData, setApiData] = useState(null)
+
+  const fetchData = async () => {
+    const resp = await fetch("https://fakestoreapi.com/products")
+    const data = await resp.json();
+    setApiData(data)
+    console.log(data[0].title, "data")
+     console.log(data, "data")
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+  return (
+    <div className="App">
+      <table border="1" >
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {apiData?.map((prod)=>(
+            <tr>
+              <td>{prod.title}</td>
+              <td>{prod.category}</td>
+              <td>{prod.description}</td>
+              <td>{prod.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+export default App;
